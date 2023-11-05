@@ -32,6 +32,9 @@ cc_library(
     hdrs = EIGEN3_THIRD_PARTY_HEADERS,
     includes = if_mkl(["./mkl_include"]),
     visibility = ["//visibility:public"],
+    defines = [
+	"EIGEN_USE_AVX512_GEMM_KERNELS=0"
+    ],
     deps = [
         "@eigen_archive//:eigen",
         "@local_config_sycl//sycl",

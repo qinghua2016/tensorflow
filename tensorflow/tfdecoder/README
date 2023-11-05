@@ -1,0 +1,4 @@
+1. put this forlder to tensorflow/tensorflow
+2. in tensorflow root dir, run: bazel build //tensorflow/tfdecoder:tfdecoder --define framework_shared_object=false , it will generate a libtfdecocder.so
+
+bazel build --copt=-mavx2 --copt=-mfma --copt=-mavx --copt=-msse4.2 //tensorflow/tfdecoder:tacotron --define framework_shared_object=false

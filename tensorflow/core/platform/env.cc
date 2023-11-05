@@ -525,6 +525,12 @@ Status ReadBinaryProto(Env* env, const string& fname,
   return Status::OK();
 }
 
+Status ReadBinaryProtoFromBuffer(Env* env, const char* buffer, int len, ::tensorflow::protobuf::MessageLite* proto) {
+    proto->ParseFromArray(buffer, len);
+    return Status::OK();
+}
+
+
 Status WriteTextProto(Env* env, const string& fname,
                       const ::tensorflow::protobuf::Message& proto) {
 #if !defined(TENSORFLOW_LITE_PROTOS)

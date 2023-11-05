@@ -526,8 +526,8 @@ EIGEN_STRONG_INLINE QInt8 predux_max<Packet64q8i>(const Packet64q8i& a) {
   Packet4i res =
       _mm_max_epi8(_mm_max_epi8(lane0, lane1), _mm_max_epi8(lane2, lane3));
   res = _mm_max_epi8(res, _mm_shuffle_epi32(res, _MM_SHUFFLE(0, 0, 3, 2)));
-  std::uint32_t w = pfirst(
-      _mm_max_epi8(res, _mm_shuffle_epi32(res, _MM_SHUFFLE(0, 0, 0, 1))));
+  std::uint32_t w = uint32_t(pfirst(
+      _mm_max_epi8(res, _mm_shuffle_epi32(res, _MM_SHUFFLE(0, 0, 0, 1)))));
   return std::min(
       {static_cast<std::int8_t>(w >> 24), static_cast<std::int8_t>(w >> 16),
        static_cast<std::int8_t>(w >> 8), static_cast<std::int8_t>(w)});
